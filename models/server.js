@@ -6,7 +6,7 @@ const express = require('express');
 class Server{
     constructor(app){
         this.app = express();
-        this.port = process.env.PORT;
+        this.port = process.env.PORT || 3000;
         this.usuarioRoutePath = '/api/usuarios';
 
         
