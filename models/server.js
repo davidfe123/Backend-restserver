@@ -1,6 +1,7 @@
 
 const cors = require('cors');
 const express = require('express');
+const { dbdConnection } = require('../database/config.js');
 
 
 class Server{
@@ -9,7 +10,8 @@ class Server{
         this.port = process.env.PORT;
         this.usuarioRoutePath = '/api/usuarios';
 
-        
+        //conexxion base de datos
+        this.conectarDb();
 
         // Middelwares
         this.middelwares();
@@ -20,6 +22,10 @@ class Server{
         
 
         this.routes()
+    }
+
+    async conectarDb(){
+        await dbdConnection();
     }
 
     middelwares(){
